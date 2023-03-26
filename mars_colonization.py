@@ -44,5 +44,39 @@ def image_mars():
                     </html>'''
 
 
+@app.route("/promotion_image")
+def promotion_image():
+    return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet" 
+                    href=style.css />
+                    <title>Колонизация</title>
+                  </head>
+                  <body>
+                    <h1>Жди нас, Марс!</h1>
+                    <img src="{url_for('static', filename='img/mars.jpg')}" 
+                        alt="здесь должна была быть картинка, но не нашлась">
+                    <div class="alert alert-primary" role="alert">
+                      Человечество вырастает из детства.
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                      Человечеству мала одна планета.
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                      Мы сделаем обитаемыми безжизненные пока планеты.
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                      И начнем с Марса!
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                      Присоединяйся!
+                    </div>
+                  </body>
+                </html>'''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
