@@ -256,5 +256,52 @@ def results(nickname, level, rating):
                 </html>'''
 
 
+@app.route("/carousel")
+def slideshow():
+    return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet"
+                   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                   integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                   crossorigin="anonymous">
+                    <title>Пейзажи Марса</title>
+                  </head>
+                  <body>
+                        <div id="carousel-mars" class="carousel slide" data-ride="carousel" data-interval="true">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-mars" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-mars" data-slide-to="1"></li>
+                                <li data-target="#carousel-mars" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item">
+                                    <img src="{url_for('static', filename='img/mars1.jpg')}" 
+                                        alt="здесь должна была быть картинка, но не нашлась">
+                                </div>
+                                <div class="item active">
+                                    <img src="{url_for('static', filename='img/mars2.jpg')}" 
+                                        alt="здесь должна была быть картинка, но не нашлась">
+                                </div>
+                                <div class="item">
+                                    <img src="{url_for('static', filename='img/mars3.jpg')}" 
+                                        alt="здесь должна была быть картинка, но не нашлась">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-mars" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Предыдущий</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-mars" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Следующий</span>
+                            </a>
+                        </div>
+                  </body>
+                </html>'''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
