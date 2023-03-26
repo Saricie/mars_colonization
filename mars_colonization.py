@@ -117,15 +117,7 @@ def astronaut_form():
                                               <option>Среднее профессиональное</option>
                                               <option>Высшее</option>
                                             </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="about">Немного о себе</label>
-                                            <textarea class="form-control" id="about" rows="3" name="about"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="photo">Приложите фотографию</label>
-                                            <input type="file" class="form-control-file" id="photo" name="file">
-                                        </div>
+                                        </div> <br>
                                         <div class="form-group">
                                             <label for="form-check">Укажите пол</label>
                                             <div class="form-check">
@@ -142,12 +134,59 @@ def astronaut_form():
                                                 Женский
                                               </label>
                                             </div>
-                                        </div>
+                                        </div> <br>
+                                        <tr>Выберите профессии</tr>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" 
+                                                id="pilot" name="job">
+                                                <label class="form-check-label" 
+                                                for="pilot">Пилот</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" 
+                                                id="builder" name="job">
+                                                <label class="form-check-label" 
+                                                for="builder">Строитель</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" 
+                                                id="doctor" name="job">
+                                                <label class="form-check-label" 
+                                                for="doctor">Врач</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" 
+                                                id="eng-expl" name="job">
+                                                <label class="form-check-label" 
+                                                for="eng-expl">Инженер-исследователь</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" 
+                                                id="exo" name="job">
+                                                <label class="form-check-label" 
+                                                for="exo">Экзобиолог</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" 
+                                                id="meteo" name="job">
+                                                <label class="form-check-label" 
+                                                for="meteo">Метеоролог</label>
+                                            </div>
+                                        </div> <br>
+                                        <div class="form-group">
+                                            <label for="about">Почему Вы хотите участвовать?</label>
+                                            <textarea class="form-control" id="about" rows="3" name="about"></textarea>
+                                        </div> <br>
+                                        <div class="form-group">
+                                            <label for="photo">Приложите фотографию</label>
+                                            <input type="file" class="form-control-file" id="photo" name="file">
+                                        </div> <br>
                                         <div class="form-group form-check">
                                             <input type="checkbox" class="form-check-input" 
                                             id="acceptRules" name="accept">
                                             <label class="form-check-label" 
-                                            for="acceptRules">Готов быть добровольцем</label>
+                                            for="acceptRules">Готовы быть добровольцем?</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Записаться</button>
                                     </form>
