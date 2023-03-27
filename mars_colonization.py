@@ -1,17 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def main():
-    return "Миссия Колонизация Марса"
-
-
-@app.route('/index')
-def index():
-    return "И на Марсе будут яблони цвести!"
+@app.route('/<title>')
+@app.route('/index/<title>')
+def main(title):
+    return render_template("base.html", title=title)
 
 
 if __name__ == '__main__':
