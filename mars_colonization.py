@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, request
 
 
 app = Flask(__name__)
@@ -277,11 +277,11 @@ def slideshow():
                                 <li data-target="#carousel-mars" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner" role="listbox">
-                                <div class="item">
+                                <div class="item active">
                                     <img src="{url_for('static', filename='img/mars1.jpg')}" 
                                         alt="здесь должна была быть картинка, но не нашлась">
                                 </div>
-                                <div class="item active">
+                                <div class="item">
                                     <img src="{url_for('static', filename='img/mars2.jpg')}" 
                                         alt="здесь должна была быть картинка, но не нашлась">
                                 </div>
@@ -299,6 +299,72 @@ def slideshow():
                                 <span class="sr-only">Следующий</span>
                             </a>
                         </div>
+                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+                  </body>
+                </html>'''
+
+
+@app.route("/load_photo", methods=['POST', 'GET'])
+def load_photo():
+    if request.method == 'GET':
+        return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                    crossorigin="anonymous">
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', 
+                                                                filename='css/astronaut_form.css')}" />
+                    <title>Отбор астронавтов</title>
+                  </head>
+                  <body>
+                    <h1>Загрузка фотографии</h1>
+                    <h2>для участия в миссии</h2>
+                    <div>
+                        <form class="login_form" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="photo">Приложите фотографию</label>
+                                <input type="file" class="form-control-file" id="photo" name="file">
+                            </div> <br>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                  </body>
+                </html>'''
+    elif request.method == 'POST':
+        f = request.files['file']
+        f.save("static/img/photo.jpg")
+        return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                    crossorigin="anonymous">
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', 
+                                                                filename='css/astronaut_form.css')}" />
+                    <title>Отбор астронавтов</title>
+                  </head>
+                  <body>
+                    <h1>Загрузка фотографии</h1>
+                    <h2>для участия в миссии</h2>
+                    <div>
+                        <form class="login_form" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="photo">Приложите фотографию</label>
+                                <input type="file" class="form-control-file" id="photo" name="file">
+                            </div> <br>
+                            <img src="{url_for('static', filename='img/photo.jpg')}" 
+                                alt="здесь должна была быть картинка, но не нашлась">
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
                   </body>
                 </html>'''
 
