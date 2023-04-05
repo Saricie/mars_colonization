@@ -23,5 +23,16 @@ def training(prof):
     return render_template("training.html", **param)
 
 
+@app.route("/list_prof/<profs_list>")
+def list_prof(profs_list):
+    param = dict()
+    param["title"] = 'Профессии'
+    if profs_list == "ol":
+        param["list"] = "ol"
+    elif profs_list == "ul":
+        param["list"] = "ul"
+    return render_template("list_prof.html", **param)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
