@@ -1,7 +1,23 @@
 from flask import Flask, render_template, redirect, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
+
+
+class LoginForm(FlaskForm):
+    id_astro = StringField('ID Астронавта', validators=[DataRequired()])
+    password_astro = PasswordField('Пароль астронавта', validators=[DataRequired()])
+    id_cap = StringField('ID Капитана', validators=[DataRequired()])
+    password_cap = PasswordField('Пароль капитана', validators=[DataRequired()])
+
+    # username = StringField('Логин', validators=[DataRequired()])
+    # password = PasswordField('Пароль', validators=[DataRequired()])
+    # remember_me = BooleanField('Запомнить меня')
+    submit = SubmitField('Доступ')
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 astro_form_d = dict()
 
@@ -12,6 +28,14 @@ def main(title):
     param = dict()
     param["title"] = title
     return render_template("base.html", **param)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('login.html', title='Аварийный доступ', form=form)
 
 
 @app.route('/training/<prof>')
