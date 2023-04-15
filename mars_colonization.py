@@ -9,10 +9,6 @@ class LoginForm(FlaskForm):
     password_astro = PasswordField('Пароль астронавта', validators=[DataRequired()])
     id_cap = StringField('ID Капитана', validators=[DataRequired()])
     password_cap = PasswordField('Пароль капитана', validators=[DataRequired()])
-
-    # username = StringField('Логин', validators=[DataRequired()])
-    # password = PasswordField('Пароль', validators=[DataRequired()])
-    # remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Доступ')
 
 
@@ -36,6 +32,12 @@ def login():
     if form.validate_on_submit():
         return redirect('/success')
     return render_template('login.html', title='Аварийный доступ', form=form)
+
+
+@app.route('/distribution')
+def distribution():
+    astronauts = ["Джесси", "Джек", "Джон", "Джейкоб"]
+    return render_template('distribution.html', title='Каюты', astronauts=astronauts)
 
 
 @app.route('/training/<prof>')
