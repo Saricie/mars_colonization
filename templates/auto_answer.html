@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="static/css/auto_answer.css" />
+    <div class="answer">
+        <h4>Фамилия: {{ surname }}</h4>
+        <h4>Имя: {{ name }}</h4>
+        <h4>Образование: {{ education }}</h4>
+        <h4>Профессия: {{ job }}</h4>
+        <h4>Пол: {{ sex }}</h4>
+        <h4>Мотивация: {{ about }}</h4>
+        <h4>Готовы остаться? {{ accept }}</h4>
+    </div>
+{% endblock %}
